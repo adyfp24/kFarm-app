@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'fragment.dart';
 
 class SensorFragment extends StatefulWidget {
   const SensorFragment({super.key});
@@ -11,7 +11,7 @@ class _SensorFragmentState extends State<SensorFragment> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('kelembapan tanah'),
+      child: Text('Monitoring Fragment'),
     );
   }
 }

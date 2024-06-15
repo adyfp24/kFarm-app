@@ -26,26 +26,22 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('Smartfarm App'),
         ),
         body: const <Widget>[
           SensorFragment(),
-          WaterFragment(),
-          FertilizerFragment()
+          ControlFragment(),
         ][_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.sensor_door),
-            label: 'kelembapan',
+            label: 'monitoring',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.water),
-            label: 'penyiraman',
+            label: 'kontroling',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.air),
-            label: 'pemupukan',
-          )
         ],
         onTap: setSelectedIndex,
         currentIndex: _selectedIndex,
