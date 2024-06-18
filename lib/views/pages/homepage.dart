@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kColorWhite,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text('K-farm App'),

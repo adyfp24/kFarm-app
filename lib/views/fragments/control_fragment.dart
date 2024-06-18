@@ -12,12 +12,13 @@ class _ControlFragmentState extends State<ControlFragment> {
   Widget build(BuildContext context) {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(25),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ControllingCard(),
+            ControllingCard(title: 'Penyiraman Otomatis',),
             SizedBox(height: 40,),
-            ControllingCard()
+            ControllingCard(title: 'Pemupukan Otomatis',)
           ],
         ),
       ),

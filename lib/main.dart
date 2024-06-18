@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Smartfarm App',
+      title: 'K-farm App',
       theme: ThemeData(
             fontFamily: GoogleFonts.poppins().fontFamily),
       home: const SplashScreen(),
