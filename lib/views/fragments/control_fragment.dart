@@ -11,7 +11,16 @@ class _ControlFragmentState extends State<ControlFragment> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Kontroling Fragment'),
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            ControllingCard(),
+            SizedBox(height: 40,),
+            ControllingCard()
+          ],
+        ),
+      ),
     );
   }
 }

@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text('Smartfarm App'),
+          title: const Text('K-farm App'),
         ),
         body: const <Widget>[
           SensorFragment(),
