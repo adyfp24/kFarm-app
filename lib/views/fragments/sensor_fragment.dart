@@ -11,7 +11,7 @@ class _SensorFragmentState extends State<SensorFragment> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Monitoring Fragment'),
+      child: Text('Monitoring Fragment realtime'),
     );
   }
 }
