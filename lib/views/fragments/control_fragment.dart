@@ -1,5 +1,6 @@
 part of 'fragment.dart';
 
+
 class ControlFragment extends StatefulWidget {
   const ControlFragment({super.key});
 
@@ -16,9 +17,9 @@ class _ControlFragmentState extends State<ControlFragment> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ControllingCard(title: 'Penyiraman Otomatis',),
-            SizedBox(height: 40,),
-            ControllingCard(title: 'Pemupukan Otomatis',)
+            ControllingCard(title: 'Penyiraman Otomatis', field: 'kontrol_penyiraman'),
+            SizedBox(height: 40),
+            ControllingCard(title: 'Pemupukan Otomatis', field: 'kontrol_pemupukan'),
           ],
         ),
       ),
