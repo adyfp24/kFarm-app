@@ -17,9 +17,9 @@ class _ControlFragmentState extends State<ControlFragment> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ControllingCard(title: 'Penyiraman Otomatis', field: 'kontrol_penyiraman'),
+            ControllingCard(title: 'Penyiraman Otomatis', field: 'watering'),
             SizedBox(height: 40),
-            ControllingCard(title: 'Pemupukan Otomatis', field: 'kontrol_pemupukan'),
+            ControllingCard(title: 'Pemupukan Otomatis', field: 'fertilizer'),
           ],
         ),
       ),

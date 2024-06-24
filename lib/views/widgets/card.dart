@@ -13,7 +13,7 @@ class ControllingCard extends StatefulWidget {
 class _ControllingCardState extends State<ControllingCard> {
   bool isSwitched = false;
   final DatabaseReference _dbRef = FirebaseDatabase.instance.ref();
-  StreamSubscription? _subscription;
+  late StreamSubscription? _subscription;
 
   @override
   void initState() {
@@ -37,7 +37,6 @@ class _ControllingCardState extends State<ControllingCard> {
   }
 
   void toggleSwitch(bool value) async {
-    print("Toggle Switch: $value"); // Debug statement
     if (mounted) {
       setState(() {
         isSwitched = value;
@@ -45,7 +44,6 @@ class _ControllingCardState extends State<ControllingCard> {
     }
     try {
       await _dbRef.child(widget.field).set(isSwitched);
-      print("Data updated successfully."); // Debug statement
     } catch (error) {
       print("Error updating switch: $error");
     }
@@ -53,7 +51,7 @@ class _ControllingCardState extends State<ControllingCard> {
 
   @override
   void dispose() {
-    _subscription?.cancel();
+    _subscription!.cancel();
     super.dispose();
   }
 
