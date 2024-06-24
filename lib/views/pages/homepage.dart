@@ -28,26 +28,39 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: kColorWhite,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text('K-farm App'),
+          title: const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'K-farm App',
+              style: TextStyle(
+                color: Colors.amber,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
+          ),
+          backgroundColor: Colors.white,
         ),
         body: const <Widget>[
           SensorFragment(),
           ControlFragment(),
         ][_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sensor_door),
-            label: 'monitoring',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.water),
-            label: 'kontroling',
-          ),
-        ],
-        onTap: setSelectedIndex,
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber,
-        unselectedItemColor: Colors.black,
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.sensor_door),
+              label: 'monitoring',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.water),
+              label: 'kontroling',
+            ),
+          ],
+          onTap: setSelectedIndex,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber,
+          unselectedItemColor: Colors.black,
+          backgroundColor: Colors.amber[50],
         ),
       ),
     );

@@ -105,7 +105,8 @@ class _ControllingCardState extends State<ControllingCard> {
                     Transform.scale(
                       scale: 2.0,
                       child: Switch(
-                        activeColor: Colors.yellow,
+                        activeColor: Colors.amber,
+                        inactiveThumbColor: Colors.amber[100],
                         value: isSwitched,
                         onChanged: toggleSwitch,
                       ),

@@ -19,11 +19,18 @@ class _SensorFragmentState extends State<SensorFragment> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Colors.amber,
+              color: Colors.amber[50],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.09),
+                  spreadRadius: 3,
+                  blurRadius: 5,
+                  offset: const Offset(0, 2),
+                ),
+              ],
             ),
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-            
-            child: Text('Monitoring kelembapan tanah',
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            child: const Text('Monitoring kelembapan tanah',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
           ),
           SizedBox(
