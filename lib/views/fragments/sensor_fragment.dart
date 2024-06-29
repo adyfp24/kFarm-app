@@ -23,7 +23,7 @@ class _SensorFragmentState extends State<SensorFragment> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.09),
-                  spreadRadius: 3,
+                  spreadRadius: 2,
                   blurRadius: 5,
                   offset: const Offset(0, 2),
                 ),
@@ -65,7 +65,7 @@ class _SensorFragmentState extends State<SensorFragment> {
                   ),
                   GaugeAnnotation(
                     widget: Container(
-                      child: Text(
+                      child: const Text(
                         'Kondisi tanah basah',
                         style: TextStyle(
                           fontSize: 16,
