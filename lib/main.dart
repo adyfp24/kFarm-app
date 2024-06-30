@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/providers/provider.dart';
 import 'package:myapp/views/pages/page.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -15,12 +17,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'K-farm App',
-      theme: ThemeData(
-            fontFamily: GoogleFonts.poppins().fontFamily),
-      home: const SplashScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => WaterProvider()),
+        ChangeNotifierProvider(create: (context) => SensorProvider()),
+        ChangeNotifierProvider(create: (context) => FertilizerProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'K-farm App',
+        theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
+        home: const SplashScreen(),
+      ),
     );
   }
 }
