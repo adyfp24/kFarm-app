@@ -1,14 +1,25 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/providers/provider.dart';
+import 'package:myapp/view_models/provider.dart';
 import 'package:myapp/views/pages/page.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    if (e is FirebaseException && e.code == 'duplicate-app') {
+    } else {
+      rethrow;
+    }
+  }
+  
   runApp(const MyApp());
 }
 
