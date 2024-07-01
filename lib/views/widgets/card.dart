@@ -11,48 +11,30 @@ class ControllingCard extends StatefulWidget {
 }
 
 class _ControllingCardState extends State<ControllingCard> {
-  bool isSwitched = false;
-  final DatabaseReference _dbRef = FirebaseDatabase.instance.ref();
-  late StreamSubscription? _subscription;
+  bool _isActive = false;
 
   @override
   void initState() {
     super.initState();
-    _initializeSwitch();
+    // Initialize the current state from the provider
+    if (widget.field == 'watering') {
+      _isActive = Provider.of<WaterProvider>(context, listen: false).watering?.kontrolAir ?? false;
+    } else if (widget.field == 'fertilizer') {
+      _isActive = Provider.of<FertilizerProvider>(context, listen: false).fertilizer?.kontrolPupuk ?? false;
+    }
   }
 
-  void _initializeSwitch() {
-    _subscription = _dbRef.child(widget.field).onValue.listen((event) {
-      if (event.snapshot.value != null) {
-        final value = event.snapshot.value as bool;
-        if (mounted) {
-          setState(() {
-            isSwitched = value;
-          });
-        }
-      }
-    }, onError: (error) {
-      print("Error initializing switch: $error");
+  void _onToggle(bool value) {
+    setState(() {
+      _isActive = value;
     });
-  }
 
-  void toggleSwitch(bool value) async {
-    if (mounted) {
-      setState(() {
-        isSwitched = value;
-      });
+    if (widget.field == 'watering') {
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:2420231561.
+      Provider.of<WaterProvider>(context, listen: false).updateWatering(value);
+    } else if (widget.field == 'fertilizer') {
+      Provider.of<FertilizerProvider>(context, listen: false).updateFertilizer(value);
     }
-    try {
-      await _dbRef.child(widget.field).set(isSwitched);
-    } catch (error) {
-      print("Error updating switch: $error");
-    }
-  }
-
-  @override
-  void dispose() {
-    _subscription!.cancel();
-    super.dispose();
   }
 
   @override
@@ -92,7 +74,7 @@ class _ControllingCardState extends State<ControllingCard> {
                   borderRadius: BorderRadius.circular(12),
                   image: const DecorationImage(
                     image: NetworkImage(
-                      'https://media.istockphoto.com/id/1346744481/id/foto/koki-anonim-memanen-sayuran-segar-di-sebuah-peternakan.jpg?s=612x612&w=0&k=20&c=H5uO1LR0LweNgzIY1P5C1-Zr8q9BpPzM-t7-2dL9jO0='),
+                        'https://media.istockphoto.com/id/1346744481/id/foto/koki-anonim-memanen-sayuran-segar-di-sebuah-peternakan.jpg?s=612x612&w=0&k=20&c=H5uO1LR0LweNgzIY1P5C1-Zr8q9BpPzM-t7-2dL9jO0='),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -107,8 +89,8 @@ class _ControllingCardState extends State<ControllingCard> {
                       child: Switch(
                         activeColor: Colors.amber,
                         inactiveThumbColor: Colors.amber[100],
-                        value: isSwitched,
-                        onChanged: toggleSwitch,
+                        value: _isActive,
+                        onChanged: _onToggle,
                       ),
                     ),
                     const SizedBox(height: 15),

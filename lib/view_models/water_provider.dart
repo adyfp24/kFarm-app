@@ -6,11 +6,7 @@ class WaterProvider extends ChangeNotifier{
   Watering? _watering;
   Watering? get watering => _watering;
 
-  Future<void> turnOn() async{
+  Future<void> updateWatering(bool control) async{
 
-  }
-
-  Future<void> turnOff() async{
-    
   }
 }

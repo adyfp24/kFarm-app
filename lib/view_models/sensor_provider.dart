@@ -6,7 +6,28 @@ class SensorProvider extends ChangeNotifier {
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
-  final DatabaseReference _db = FirebaseDatabase.instance.ref().child('humidity');
+  final DatabaseReference _db =
+      FirebaseDatabase.instance.ref().child('humidity');
+
+  Future<void> getSensor() async {
+    try {
+      final response = await http.get(Uri.parse(
+          'https://smartfarm-app-4f440-default-rtdb.asia-southeast1.firebasedatabase.app/.json'));
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        _humidity = json['humidity'];
+        _isLoading = false;
+        notifyListeners();
+      } else {
+        print('gagal fetch');
+        notifyListeners();
+      }
+    } catch (e) {
+      print('error fetching realtime data $e');
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
 
   // StreamSubscription<DatabaseEvent>? _subscription;
 
@@ -31,26 +52,4 @@ class SensorProvider extends ChangeNotifier {
   //   _subscription?.cancel();
   //   super.dispose();
   // }
-Future<void> getSensor() async {
-    try {
-      final response = await http.get(Uri.parse(
-          'https://smartfarm-app-4f440-default-rtdb.asia-southeast1.firebasedatabase.app/.json'));
-      if (response.statusCode == 200) {
-        final json = jsonDecode(response.body);
-        _humidity = json['humidity'];
-        _isLoading = false;
-        notifyListeners();
-      } else {
-        print('gagal fetch');
-        notifyListeners();
-      }
-    } catch (e) {
-      print('error fetching realtime data $e');
-      _isLoading = false;
-      notifyListeners();
-    }
-
-  }
-  
 }
-
