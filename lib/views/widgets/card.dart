@@ -3,8 +3,9 @@ part of 'widget.dart';
 class ControllingCard extends StatefulWidget {
   final String title;
   final String field;
+  final String imagePath;
 
-  const ControllingCard({super.key, required this.title, required this.field});
+  const ControllingCard({super.key, required this.title, required this.field, required this.imagePath});
 
   @override
   State<ControllingCard> createState() => _ControllingCardState();
@@ -72,9 +73,9 @@ class _ControllingCardState extends State<ControllingCard> {
                 height: 120,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://media.istockphoto.com/id/1346744481/id/foto/koki-anonim-memanen-sayuran-segar-di-sebuah-peternakan.jpg?s=612x612&w=0&k=20&c=H5uO1LR0LweNgzIY1P5C1-Zr8q9BpPzM-t7-2dL9jO0='),
+                  image: DecorationImage(
+                    image: AssetImage(
+                        widget.imagePath),
                     fit: BoxFit.fill,
                   ),
                 ),

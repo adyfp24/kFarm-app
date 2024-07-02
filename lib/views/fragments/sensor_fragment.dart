@@ -72,7 +72,7 @@ class _SensorFragmentState extends State<SensorFragment> {
                       GaugeAnnotation(
                         widget: Container(
                           child: const Text(
-                            'Kondisi tanah basah',
+                            'Tanah basah',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.normal,

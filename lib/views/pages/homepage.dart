@@ -48,11 +48,11 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.sensor_door),
+              icon: Icon(Icons.monitor),
               label: 'monitoring',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.water),
+              icon: Icon(Icons.water_drop_outlined),
               label: 'kontroling',
             ),
           ],
